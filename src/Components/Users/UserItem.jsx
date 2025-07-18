@@ -1,8 +1,8 @@
-import { createElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./UserItem.css";
 
 export default function UserList() {
-  const [data, setData] = useState([]); // აქ ყოველთვის მონაცემების დროს საჭიროა მასივი  []
+  const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const [expandedID, setExpandedID] = useState(null);
 
@@ -13,22 +13,24 @@ export default function UserList() {
   }, []);
 
   function Details(id) {
-    if (!expandedID) {
+    if (expandedID === id) {
       return (
         <span
           className="material-symbols-outlined"
-          onClick={() => setExpandedID(true)}
+          onClick={() => setExpandedID(null)}
+          style={{ cursor: "pointer" }}
         >
-          arrow_drop_up
+          arrow_drop_down
         </span>
       );
     } else {
       return (
         <span
           className="material-symbols-outlined"
-          onClick={() => setExpandedID(false)}
+          onClick={() => setExpandedID(id)}
+          style={{ cursor: "pointer" }}
         >
-          arrow_drop_down
+          arrow_drop_up
         </span>
       );
     }
@@ -53,10 +55,21 @@ export default function UserList() {
                   <td>{item.name}</td>
                   <td>{item.username}</td>
                   <td>{item.email}</td>
-                  <td onClick={() => setExpandedID(!expandedID)}>
-                    <div className="details">
-                      <Details />
-                    </div>
+                  <td>
+                    {Details(item.id)}
+                    {expandedID === item.id && (
+                      <div className="address-details">
+                        <div>{item.address.street}</div>
+                        <div>{item.address.suite}</div>
+                        <div>{item.address.city}</div>
+                        <div>{item.address.zipcode}</div>
+                        <div>
+                          Geo:
+                          <div>{item.address.geo.lat}</div>
+                          <div>{item.address.geo.lng}</div>
+                        </div>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -66,7 +79,6 @@ export default function UserList() {
             Hide All
           </button>
         </div>
-        ;
       </>
     );
   }

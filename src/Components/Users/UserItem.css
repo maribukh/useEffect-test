@@ -1,5 +1,6 @@
 table,
 tr {
+    width: 100%;
     padding: 2rem;
     cursor: pointer;
     text-align: start;
@@ -7,14 +8,29 @@ tr {
 
 th {
     text-align: start;
-    padding: 0rem 2rem;
+    padding: 1rem 2rem;
+
 }
 
 td {
     padding: 1rem 2rem;
     cursor: pointer;
+
 }
 
 td:hover {
     color: gray;
+}
+
+.address-details {
+    margin-top: 8px;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+.address-details:hover {
+    color: black;
+
 }
