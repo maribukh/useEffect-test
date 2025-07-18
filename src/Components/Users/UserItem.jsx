@@ -58,7 +58,10 @@ export default function UserList() {
                   <td>
                     {Details(item.id)}
                     {expandedID === item.id && (
-                      <div className="address-details">
+                      <div
+                        className="address-details"
+                        onClick={() => setExpandedID(null)}
+                      >
                         <div>{item.address.street}</div>
                         <div>{item.address.suite}</div>
                         <div>{item.address.city}</div>
