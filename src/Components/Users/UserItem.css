@@ -1,0 +1,20 @@
+table,
+tr {
+    padding: 2rem;
+    cursor: pointer;
+    text-align: start;
+}
+
+th {
+    text-align: start;
+    padding: 0rem 2rem;
+}
+
+td {
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+td:hover {
+    color: gray;
+}
